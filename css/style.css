@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+}
+#scrabbleBoard {
+    height: 160px;
+    width: 100vw;
+}
+#scrabblePNG {
+    margin: auto;
+    margin-top: 40px;
+    margin-left: 150px;
+    width: 100vw;
+    height: 10vh;
+    background-image: url('/graphics_data/Scrabble_Board_OneLine.png');
+    background-repeat: no-repeat;
+}
