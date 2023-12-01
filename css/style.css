@@ -13,19 +13,23 @@ h1 {
     transform: translateX(-50%) translateY(-50%);
 }
 #scrabbleSnapPoint {
+    margin: auto;
+    margin-top: 9.5%;
+    margin-left:-20px;
+    justify-content: center;
     display: grid;
     grid-auto-flow: column;
-    column-gap: 0px;
+    column-gap: 3px;
 }
 #scrabbleSnapPoint > * {
     align-self: center;
 }
 article {
-    left:auto;
+    border: 1px solid black;
+    margin: auto;
+    align-self: center;
     margin-top: 30vh;
-    width: 100vw;
-    height: 50vh;
-    background-color: black;
+    width: 34.3vw;
 }
 #letterBox {
     width:70px;
@@ -36,3 +40,4 @@ article {
     height: 70px;
     border: 1px solid blue;
 }
+.ui-draggable-dragging { border:2px solid red; }
