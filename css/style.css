@@ -5,12 +5,40 @@ h1 {
     height: 160px;
     width: 100vw;
 }
-#scrabblePNG {
-    margin: auto;
-    margin-top: 40px;
-    margin-left: 150px;
+
+#board{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+#scrabbleSnapPoint {
+    display: flex;
+    
+}
+#scrabbleSnapPoint > * {
+    margin: 1.5px;
+}
+#snapPointPositions {
+    width: auto;
+    border: 1px solid green;
+    margin-top: 285px;
+    margin-left: 700px;
+    
+}
+article {
+    left:auto;
+    margin-top: 30vh;
     width: 100vw;
-    height: 10vh;
-    background-image: url('/graphics_data/Scrabble_Board_OneLine.png');
-    background-repeat: no-repeat;
+    height: 50vh;
+    background-color: black;
+}
+#letterBox {
+    width:70px;
+    height: 70px;
+}
+#snapPoint {
+    width: 70px;
+    height: 70px;
+    border: 1px solid blue;
 }
