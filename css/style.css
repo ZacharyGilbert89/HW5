@@ -1,3 +1,6 @@
+* {
+    background: rgb(255, 228, 196);
+}
 h1 {
     text-align: center;
 }
@@ -14,12 +17,12 @@ h1 {
 }
 #scrabbleSnapPoint {
     margin: auto;
+    margin-left:-17.5px;
     margin-top: 9.5%;
-    margin-left:-20px;
     justify-content: center;
     display: grid;
     grid-auto-flow: column;
-    column-gap: 3px;
+    column-gap: 7.6px;
 }
 #scrabbleSnapPoint > * {
     align-self: center;
@@ -32,12 +35,16 @@ article {
     width: 34.3vw;
 }
 #letterBox {
-    width:70px;
-    height: 70px;
+    margin-left:auto;
+    width:65px;
+    height: 65px;
 }
 #snapPoint {
-    width: 70px;
-    height: 70px;
-    border: 1px solid blue;
+    position:grid;
+    z-index: -1;
+    margin-top: 49px;
+    width: 65px;
+    height: 65px;
+    border: 1px solid red;
 }
 .ui-draggable-dragging { border:2px solid red; }

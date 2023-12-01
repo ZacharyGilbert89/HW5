@@ -31,7 +31,11 @@ function onDone(){
     $(".draggable_box ").draggable({
         snap:"#snapPoint ",
         snapMode: "inner",
-        snapTolerance: 10,
-        
+        revert: "invalid",
+        snapTolerance: 40,
+    });
+    $("#snapPoint ").droppable({
+        accept: ".draggable_box",
+        reject: "#lettersDraggable"
     });
 }
