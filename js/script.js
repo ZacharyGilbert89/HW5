@@ -19,19 +19,19 @@ const piecesArray = jsonObject.pieces;
     //alert(Letters[0]);
 
     //create a draggable element for each letter
-     
-    $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box box1" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[0]+ '.jpg">');
-    $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box box1" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[0]+ '.jpg">');
-    $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box box1" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[0]+ '.jpg">');
-    $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box box1" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[0]+ '.jpg">');
-    $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box box1" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[0]+ '.jpg">');
-    $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box box1" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[0]+ '.jpg">');
-    $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box box1" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[0]+ '.jpg">');
-
-$(".draggable_box").draggable({
-    snap:"#snapPoint ",
-    snapMode: "inner",
-});
-function GenerateRandomLetter(){
-
+    $(function () {
+        for(let i = 0; i < 7;i++){
+          var num = Math.floor(Math.random() * (Letters.length));
+          console.log(num);
+          $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg">');
+        }
+        onDone();
+      })
+function onDone(){
+    $(".draggable_box ").draggable({
+        snap:"#snapPoint ",
+        snapMode: "inner",
+        snapTolerance: 10,
+        
+    });
 }

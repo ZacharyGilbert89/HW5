@@ -13,18 +13,12 @@ h1 {
     transform: translateX(-50%) translateY(-50%);
 }
 #scrabbleSnapPoint {
-    display: flex;
-    
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 0px;
 }
 #scrabbleSnapPoint > * {
-    margin: 1.5px;
-}
-#snapPointPositions {
-    width: auto;
-    border: 1px solid green;
-    margin-top: 285px;
-    margin-left: 700px;
-    
+    align-self: center;
 }
 article {
     left:auto;
