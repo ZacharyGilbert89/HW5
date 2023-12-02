@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 
     //generate 7 letters in an array
     // Your JSON string
@@ -22,8 +24,8 @@ const piecesArray = jsonObject.pieces;
     $(function () {
         for(let i = 0; i < 7;i++){
           var num = Math.floor(Math.random() * (Letters.length));
-          console.log(num);
-          $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg">');
+          //console.log(num);
+          $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
         }
         onDone();
       })
@@ -36,6 +38,11 @@ function onDone(){
     });
     $("#snapPoint ").droppable({
         accept: ".draggable_box",
-        reject: "#lettersDraggable"
+        reject: "#lettersDraggable",
+        drop: function(event, ui) {
+            var letter = ui.draggable.val("id", ui.draggable).attr('alt');
+            console.log(letter);
+        }
     });
 }
+});
