@@ -1,37 +1,12 @@
-    // Your JSON string
-    const jsonString = '{"pieces":[{"letter":"A","value":1,"amount":9},{"letter":"B","value":3,"amount":2},{"letter":"C","value":3,"amount":2},{"letter":"D","value":2,"amount":4},{"letter":"E","value":1,"amount":12},{"letter":"F","value":4,"amount":2},{"letter":"G","value":2,"amount":3},{"letter":"H","value":4,"amount":2},{"letter":"I","value":1,"amount":9},{"letter":"J","value":8,"amount":1},{"letter":"K","value":5,"amount":1},{"letter":"L","value":1,"amount":4},{"letter":"M","value":3,"amount":2},{"letter":"N","value":1,"amount":5},{"letter":"O","value":1,"amount":8},{"letter":"P","value":3,"amount":2},{"letter":"Q","value":10,"amount":1},{"letter":"R","value":1,"amount":6},{"letter":"S","value":1,"amount":4},{"letter":"T","value":1,"amount":6},{"letter":"U","value":1,"amount":4},{"letter":"V","value":4,"amount":2},{"letter":"W","value":4,"amount":2},{"letter":"X","value":8,"amount":1},{"letter":"Y","value":4,"amount":2},{"letter":"Z","value":10,"amount":1}]}';
-
-    // Parse the JSON string into a JavaScript object
-    const jsonObject = JSON.parse(jsonString);
-    
-    // Access the "pieces" array
-    const piecesArray = jsonObject.pieces;
-    let currentScore = 0;
+var boardElements = 0;
+const jsonString = '{"pieces":[{"letter":"A","value":1,"amount":9},{"letter":"B","value":3,"amount":2},{"letter":"C","value":3,"amount":2},{"letter":"D","value":2,"amount":4},{"letter":"E","value":1,"amount":12},{"letter":"F","value":4,"amount":2},{"letter":"G","value":2,"amount":3},{"letter":"H","value":4,"amount":2},{"letter":"I","value":1,"amount":9},{"letter":"J","value":8,"amount":1},{"letter":"K","value":5,"amount":1},{"letter":"L","value":1,"amount":4},{"letter":"M","value":3,"amount":2},{"letter":"N","value":1,"amount":5},{"letter":"O","value":1,"amount":8},{"letter":"P","value":3,"amount":2},{"letter":"Q","value":10,"amount":1},{"letter":"R","value":1,"amount":6},{"letter":"S","value":1,"amount":4},{"letter":"T","value":1,"amount":6},{"letter":"U","value":1,"amount":4},{"letter":"V","value":4,"amount":2},{"letter":"W","value":4,"amount":2},{"letter":"X","value":8,"amount":1},{"letter":"Y","value":4,"amount":2},{"letter":"Z","value":10,"amount":1}]}';
+const jsonObject = JSON.parse(jsonString);
+const piecesArray = jsonObject.pieces;
+let currentScore = 0;    
+var Letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 $(document).ready(function(){
-
-
-    //generate 7 letters in an array
-
-
-// Loop through the array and access each object's properties
-// piecesArray.forEach(piece => {
-//   console.log(`Letter: ${piece.letter}, Value: ${piece.value}, Amount: ${piece.amount}`);
-// });
-
-    var Letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
-    //alert(Letters[0]);
-
-    //create a draggable element for each letter
-    $(function () {
-        for(let i = 0; i < 7;i++){
-          var num = Math.floor(Math.random() * (Letters.length));
-          //console.log(num);
-          $('#lettersDraggable').append('<img id = "letterBox" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
-        }
-        onDone();
-      })
-    //Points  
+    GenerateStartingLetters();
+});
 function onDone(){
     $(".draggable_box ").draggable({
         snap:"#snapPoint , #snapHand ",
@@ -41,17 +16,75 @@ function onDone(){
     });
     $("#snapPoint ").droppable({
         accept: ".draggable_box",
-        reject: "#lettersDraggable",
+        reject: ".snapHand1",
         drop: function(event, ui) {
             var letter = ui.draggable.val("id", ui.draggable).attr('alt');
-            console.log(letter);
-            UpdateScore(letter);
+            ui.draggable.attr('id', 'onBoard');
+            boardElements++;
+            const value = getLetterValue(letter);
+            if($(this).hasClass('snapPoint3') || $(this).hasClass('snapPoint7') || $(this).hasClass('snapPoint9') || $(this).hasClass('snapPoint13')) {
+                UpdateScore(value*2);
+            }
+            else {
+                UpdateScore(value);
+            }
+            
         }
     });
 }
-});
-function UpdateScore(letter) {
-    const value = getLetterValue(letter);
+function GenerateStartingLetters() {
+    let iter = 0;
+    var offset = 1;
+    while(true) {
+        if(iter < 7) {
+            var num = Math.floor(Math.random() * (Letters.length));
+            var letter = Letters[num];
+            var letterSelect = piecesArray.find(piece => piece.letter === letter)
+            if(letterSelect.amount > 0) {
+                $('#snapHand'+offset).append('<img name = "handElements" id = "onHand" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
+                iter++;
+                offset++;
+            }
+        }
+        else {
+            break;
+        }
+    }
+    onDone();
+}
+function newLetters() {
+    //clear hand
+    var handElements = document.getElementsByName("handElements");
+    var totalElements = handElements.length;
+    remainingElements = totalElements - boardElements;
+    //alert(remainingElements);
+    for(var i= 0; i < remainingElements; i++) {
+        $("#onHand").remove();
+    }
+    //New letters
+    generateRemainingLetter(remainingElements);
+}
+function generateRemainingLetter(count) {
+    let iter = 0;
+    var offset = 1;
+    while(true) {
+        if(iter < count) {
+            var num = Math.floor(Math.random() * (Letters.length));
+            var letter = Letters[num];
+            var letterSelect = piecesArray.find(piece => piece.letter === letter)
+            if(letterSelect.amount > 0) {
+                $('#snapHand'+offset).append('<img name = "handElements" id = "onHand" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
+                iter++;
+                offset++;
+            }
+        }
+        else {
+            break;
+        }
+    }
+    onDone();
+}
+function UpdateScore(value) {
     //console.log(value);
     currentScore += value;
     $("#score").html(currentScore);
@@ -63,4 +96,7 @@ function getLetterValue(letter) {
     } else {
         return null;
     }
+}
+function startOver(){
+    location.reload();
 }
