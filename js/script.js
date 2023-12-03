@@ -9,21 +9,22 @@ $(document).ready(function(){
 });
 function onDone(){
     $(".draggable_box ").draggable({
-        snap:"#snapPoint  ,.handSnap",
+        snap:"#snapPoint ",
         snapMode: "inner",
         revert: "invalid",
         snapTolerance: 40,
     });
     $("#snapPoint ").droppable({
         accept: ".draggable_box",
-        reject: ".handSnap ",
+        reject: "#handSnap1",
         drop: function(event, ui) {
             var letter = ui.draggable.val("id", ui.draggable).attr('alt');
             ui.draggable.attr('id', 'onBoard');
             boardElements++;
             const value = getLetterValue(letter);
-            $(this).data("Occupied", $(this).attr("name"));
-            console.log("Occupied");
+            // $(this).attr('name', 'Occupied');
+            // console.log($('#snapPoint').attr('name'));
+            // $("#snapPoint").attr('name', 'Occupied').droppable("disable");
             if($(this).hasClass('snapPoint3') || $(this).hasClass('snapPoint7') || $(this).hasClass('snapPoint9') || $(this).hasClass('snapPoint13')) {
                 UpdateScore(value*2);
             }
