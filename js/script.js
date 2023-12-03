@@ -9,26 +9,27 @@ $(document).ready(function(){
 });
 function onDone(){
     $(".draggable_box ").draggable({
-        snap:"#snapPoint , #snapHand ",
+        snap:"#snapPoint  ,.handSnap",
         snapMode: "inner",
         revert: "invalid",
         snapTolerance: 40,
     });
     $("#snapPoint ").droppable({
         accept: ".draggable_box",
-        reject: ".snapHand1",
+        reject: ".handSnap ",
         drop: function(event, ui) {
             var letter = ui.draggable.val("id", ui.draggable).attr('alt');
             ui.draggable.attr('id', 'onBoard');
             boardElements++;
             const value = getLetterValue(letter);
+            $(this).data("Occupied", $(this).attr("name"));
+            console.log("Occupied");
             if($(this).hasClass('snapPoint3') || $(this).hasClass('snapPoint7') || $(this).hasClass('snapPoint9') || $(this).hasClass('snapPoint13')) {
                 UpdateScore(value*2);
             }
             else {
                 UpdateScore(value);
             }
-            
         }
     });
 }
@@ -41,7 +42,7 @@ function GenerateStartingLetters() {
             var letter = Letters[num];
             var letterSelect = piecesArray.find(piece => piece.letter === letter)
             if(letterSelect.amount > 0) {
-                $('#snapHand'+offset).append('<img name = "handElements" id = "onHand" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
+                $('#snapHand'+offset).append('<img value = "0" name = "handElements" id = "onHand" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
                 iter++;
                 offset++;
             }
