@@ -50,6 +50,7 @@ article {
     margin-top: 30vh;
 }
 #letterBoard {
+    opacity: 1;
     position: absolute;
     z-index: 1;
     top:-40px;
@@ -125,6 +126,9 @@ article {
     background: rgb(13, 255, 0);
     border-color: rgb(13, 255, 0);
     box-shadow: 0 0 80px rgb(13, 255, 0);
+}
+#lettersDraggable {
+    z-index: 1000;
 }
 .ui-draggable:hover {
     outline: none;
