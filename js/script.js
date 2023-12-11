@@ -13,26 +13,41 @@ function onDone(){
         snapMode: "inner",
         snapTolerance: 40,
     });
-    $("#snapPoint ").droppable({
+    $("#snapPoint ,.handSnap").droppable({
         accept: ".draggable_box",
         reject: "invalid",
         drop: function(event, ui) {
             var letter = ui.draggable.val("id", ui.draggable).attr('alt');
-            ui.draggable.attr('id', 'onBoard');
-            boardElements++;
             const value = getLetterValue(letter);
-            // $(this).attr('name', 'Occupied');
-            // console.log($('#snapPoint').attr('name'));
-            // $("#snapPoint").attr('name', 'Occupied').droppable("disable");
-            if($(this).hasClass('snapPoint3') || $(this).hasClass('snapPoint7') || $(this).hasClass('snapPoint9') || $(this).hasClass('snapPoint13')) {
+            if($(this).hasClass('handSnap') && ui.draggable.val("id", ui.draggable).attr('value') == 1) {
+                console.log("I have letter: ", letter);
+                UpdateScore(-value)
+                ui.draggable.attr('id', 'onHand');
+                boardElements--;
+            }
+            else if($(this).hasClass('handSnap') && ui.draggable.val("id", ui.draggable).attr('value') == 2) {
+                UpdateScore(-value*2)
+                ui.draggable.attr('id', 'onHand');
+                boardElements--;
+            }
+
+            if($(this).hasClass('snapPoint3') || $(this).hasClass('snapPoint7') || $(this).hasClass('snapPoint9') || $(this).hasClass('snapPoint13') && !$(this).hasClass('handSnap')) {
+                ui.draggable.attr('value', '2');
                 UpdateScore(value*2);
+                ui.draggable.attr('id', 'onBoard');
+                boardElements++;
             }
-            else {
+            else if (!$(this).hasClass('handSnap')){
+                ui.draggable.attr('value', '1');
                 UpdateScore(value);
+                ui.draggable.attr('id', 'onBoard');
+                boardElements++;
             }
+
         }
     });
 }
+
 function GenerateStartingLetters() {
     let iter = 0;
     var offset = 1;
@@ -42,7 +57,7 @@ function GenerateStartingLetters() {
             var letter = Letters[num];
             var letterSelect = piecesArray.find(piece => piece.letter === letter)
             if(letterSelect.amount > 0) {
-                $('#snapHand'+offset).append('<img value = "0" name = "handElements" id = "onHand" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
+                $('#snapHand'+offset).append('<img value = "1" name = "handElements" id = "onHand" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
                 iter++;
                 offset++;
                 letterSelect.amount--;

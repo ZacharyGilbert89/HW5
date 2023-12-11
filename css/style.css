@@ -1,4 +1,14 @@
-@import url('https://fonts.cdnfonts.com/css/earth-orbiter');/*Font import*/
+@font-face {
+    font-family: 'Earth Orbiter Extra-Bold';
+    src: url('/css/fonts/earthorbiterbold.ttf');
+}
+@font-face {
+    font-family: 'Earth Orbiter Extra-Bold 3D';
+    src: url('/css/fonts/earthorbiterdeep3d.ttf');
+}
+* {
+    font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
+}
 body {
     background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab); /*Background Gradient*/
     background-repeat: no-repeat;
@@ -7,13 +17,16 @@ body {
 	height: 100vh;/*Fills screen*/
 }
 h1 {
-    font-family: 'Earth Orbiter Extra-Bold', sans-serif;
+    font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
     position: absolute;
     font-size: 200px;
     top: -3%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     text-align: center;
+}
+#scoreBoard p {
+    font-family: 'Arial', sans-serif;
 }
 #scrabbleBoard {
     height: 160px;
@@ -51,6 +64,7 @@ article {
 }
 #letterBoard {
     opacity: 1;
+    width:110%;
     position: absolute;
     z-index: 1;
     top:-40px;
@@ -78,7 +92,6 @@ article {
     height: 82px;
 }
 #scoreBoard h2{
-    font-family: 'Earth Orbiter Extra-Bold', sans-serif;
     position: absolute;
     top: 15%;
     left: 50%;
@@ -97,7 +110,6 @@ article {
     font-size: xx-large;
 }
 #newLetter, #startOver{
-    font-family: 'Earth Orbiter Extra-Bold', sans-serif;
     position: absolute;
     cursor:pointer;
     width: 100px;
