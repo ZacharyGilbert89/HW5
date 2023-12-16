@@ -13,35 +13,42 @@ function onDone(){
         snapMode: "inner",
         snapTolerance: 40,
     });
-    $("#snapPoint ,.handSnap").droppable({
+    $("#snapPoint, .handSnap").droppable({
         accept: ".draggable_box",
-        reject: "invalid",
         drop: function(event, ui) {
-            var letter = ui.draggable.val("id", ui.draggable).attr('alt');
+            var letter = ui.draggable.attr('alt');
             const value = getLetterValue(letter);
+    
+            // Check if the droppable spot is already occupied
+            if ($(this).attr('name') === "Occupied") {
+                console.log("Cannot place here: Spot is already occupied");
+                ui.draggable.animate(ui.draggable.data('uiDraggable').originalPosition, "slow"); // Manually revert
+                return; // Prevent further processing
+            }
             if($(this).hasClass('handSnap') && ui.draggable.val("id", ui.draggable).attr('value') == 1) {
-                console.log("I have letter: ", letter);
+                ui.draggable.attr('name', 'notOccupied');
                 UpdateScore(-value)
                 ui.draggable.attr('id', 'onHand');
                 boardElements--;
             }
             else if($(this).hasClass('handSnap') && ui.draggable.val("id", ui.draggable).attr('value') == 2) {
                 UpdateScore(-value*2)
+                ui.draggable.attr('name', 'notOccupied');
                 ui.draggable.attr('id', 'onHand');
                 boardElements--;
             }
-
-            if($(this).hasClass('snapPoint3') || $(this).hasClass('snapPoint7') || $(this).hasClass('snapPoint9') || $(this).hasClass('snapPoint13') && !$(this).hasClass('handSnap')) {
+            if(['snapPoint3', 'snapPoint7', 'snapPoint9', 'snapPoint13'].some(c => $(this).hasClass(c)) && !$(this).hasClass('handSnap')) {
                 ui.draggable.attr('value', '2');
-                UpdateScore(value*2);
+                UpdateScore(value * 2);
                 ui.draggable.attr('id', 'onBoard');
                 boardElements++;
-            }
-            else if (!$(this).hasClass('handSnap')){
+                $(this).attr('name', 'Occupied'); // Mark this snap point as occupied
+            } else if (!$(this).hasClass('handSnap')) {
                 ui.draggable.attr('value', '1');
                 UpdateScore(value);
                 ui.draggable.attr('id', 'onBoard');
                 boardElements++;
+                $(this).attr('name', 'Occupied'); // Mark this snap point as occupied
             }
 
         }
