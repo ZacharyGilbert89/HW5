@@ -7,11 +7,11 @@ excerpted for educational purposes with credit to the author.
 updated by ZG on December 15, 2023 at 11:30 AM */
 @font-face {
     font-family: 'Earth Orbiter Extra-Bold';
-    src: url('/css/fonts/earthorbiterbold.ttf');
+    src: url('css/fonts/earthorbiterbold.ttf');
 }
 @font-face {
     font-family: 'Earth Orbiter Extra-Bold 3D';
-    src: url('/css/fonts/earthorbiterdeep3d.ttf');
+    src: url('css/fonts/earthorbiterdeep3d.ttf');
 }
 * { /*Sets default font*/
     font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
