@@ -5,17 +5,6 @@ Zachary_Gilbert@student.uml.edu
 Copyright (c) 2023 by Zachary Gilbert. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
 updated by ZG on December 15, 2023 at 11:30 AM */
-@font-face {
-    font-family: 'Earth Orbiter Extra-Bold';
-    src: url('fonts/earthorbiterbold.ttf');
-}
-@font-face {
-    font-family: 'Earth Orbiter Extra-Bold 3D';
-    src: url('fonts/earthorbiterdeep3d.ttf');
-}
-* { /*Sets default font*/
-    font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
-}
 body {
     /*Styles the background*/
     background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab); /*Background Gradient*/
