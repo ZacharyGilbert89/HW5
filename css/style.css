@@ -5,17 +5,6 @@ Zachary_Gilbert@student.uml.edu
 Copyright (c) 2023 by Zachary Gilbert. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
 updated by ZG on December 15, 2023 at 11:30 AM */
-@font-face {
-    font-family: 'Earth Orbiter Extra-Bold';
-    src: url('/css/fonts/earthorbiterbold.ttf');
-}
-@font-face {
-    font-family: 'Earth Orbiter Extra-Bold 3D';
-    src: url('/css/fonts/earthorbiterdeep3d.ttf');
-}
-* { /*Sets default font*/
-    font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
-}
 body {
     /*Styles the background*/
     background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab); /*Background Gradient*/
@@ -27,20 +16,16 @@ body {
 h1 {/*Title of the game*/
     font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
     position: absolute;
-    font-size: 200px;
+    font-size: 12rem;
     top: -3%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);/*Centers the element*/
     text-align: center;
 }
-#scoreBoard p {/*Sets normal font for readability*/
-    font-family: 'Arial', sans-serif;
-}
 #scrabbleBoard {/*size of the board*/
     height: 160px;
     width: 100vw;
 }
-
 #board{/*Position of the board*/
     z-index: 0;
     position: absolute;
