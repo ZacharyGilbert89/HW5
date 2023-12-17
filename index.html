@@ -23,8 +23,14 @@ updated by ZG on December 15, 2023 at 11:30 AM
     <div id = "scrabbleBoard">
         <img id = "board" src = 'board_oneline.jpg'><!--This image was created by me cause the one provided didnt have even spacing-->
         <div id = "scoreBoard"><!--Scoreboard element-->
-            <h2>Score: </h2>
-            <p id="score"></p>
+            <div id = "currentScore">
+                <h2>Current Score: </h2>
+                <p id="score"></p>
+            </div>
+            <div id = "totalScore">
+                <h3>Total Score: </h3>
+                <p id="totScore"></p>
+            </div>
         </div>
         <div id = "snapPointPositions">
             <div id = "scrabbleSnapPoint"><!--board Snap Points-->
@@ -47,7 +53,7 @@ updated by ZG on December 15, 2023 at 11:30 AM
                 <div name = "notOccupied" class = "snapPoint15" id = "snapPoint"></div>
             </div>
         </div>
-        <button id = "newLetter" type = "button" onclick = newLetters()>New Letters</button><!--New Letters Button-->
+        <button id = "newLetter" type = "button" onclick = newLetters()>Next Word</button><!--New Letters Button-->
         <button id = "startOver" type = "button" onclick = startOver()>NEW GAME</button><!--Restarts the game button-->
         <article>
             <div id = "lettersDraggable">

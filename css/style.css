@@ -88,23 +88,41 @@ article {/*for hand snap points*/
     width: 82px;
     height: 82px;
 }
-#scoreBoard h2{/*styling the scoreboard*/
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    width: 100px;
-    transform: translateX(-50%) translateY(-50%);
-    font-size:xx-large;
-    text-align: center;
-}
-#scoreBoard p {/*styling for the score title of the game*/
+#currentScore h2{/*styling the scoreboard*/
     position: absolute;
     top: 20%;
-    left: 50%;
+    left: 60%;
+    width: 100px;
+    transform: translateX(-50%) translateY(-50%);
+    font-size:large;
+    text-align: center;
+}
+#currentScore p {/*styling for the score title of the game*/
+    position: absolute;
+    top: 20%;
+    left: 66%;
     width: 100px;
     transform: translateX(-50%) translateY(-50%);
     text-align: center;
-    font-size: xx-large;
+    font-size: large;
+}
+#totalScore h3{/*styling the scoreboard*/
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: 100px;
+    transform: translateX(-50%) translateY(-50%);
+    font-size:large;
+    text-align: center;
+}
+#totalScore p {/*styling for the score title of the game*/
+    position: absolute;
+    top: 20%;
+    left: 46%;
+    width: 100px;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    font-size: large;
 }
 #newLetter, #startOver{ /*Styling for positions the buttons for restarting the game, and new letters*/
     position: absolute;

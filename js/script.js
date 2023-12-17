@@ -13,6 +13,7 @@ var boardElements = 0;//Keeps track of how many tiles are on the screen
 const jsonString = '{"pieces":[{"letter":"A","value":1,"amount":9},{"letter":"B","value":3,"amount":2},{"letter":"C","value":3,"amount":2},{"letter":"D","value":2,"amount":4},{"letter":"E","value":1,"amount":12},{"letter":"F","value":4,"amount":2},{"letter":"G","value":2,"amount":3},{"letter":"H","value":4,"amount":2},{"letter":"I","value":1,"amount":9},{"letter":"J","value":8,"amount":1},{"letter":"K","value":5,"amount":1},{"letter":"L","value":1,"amount":4},{"letter":"M","value":3,"amount":2},{"letter":"N","value":1,"amount":5},{"letter":"O","value":1,"amount":8},{"letter":"P","value":3,"amount":2},{"letter":"Q","value":10,"amount":1},{"letter":"R","value":1,"amount":6},{"letter":"S","value":1,"amount":4},{"letter":"T","value":1,"amount":6},{"letter":"U","value":1,"amount":4},{"letter":"V","value":4,"amount":2},{"letter":"W","value":4,"amount":2},{"letter":"X","value":8,"amount":1},{"letter":"Y","value":4,"amount":2},{"letter":"Z","value":10,"amount":1},{"letter":"Blank","value":0,"amount":2}]}';
 const jsonObject = JSON.parse(jsonString);
 const piecesArray = jsonObject.pieces;
+var totalScore = 0;
 let currentScore = 0; 
 //Letter Array has all availabe letters, makes it easier to use to look up in the jsonString what their values are and also for instantiating the letter elements
 var Letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z", "Blank"];
@@ -63,12 +64,14 @@ function onDone(){ //Once the letters are done being generated, the game is read
                 ui.draggable.attr('value', '2');//sets the value of the letter element for future use
                 UpdateScore(value * 2);//Update the score with the double value
                 ui.draggable.attr('id', 'onBoard');//tells other checkings to see if the piece is onBoard
+                ui.draggable.attr('name', 'boardElements');
                 boardElements++;//increase board elements 
                 $(this).attr('name', 'Occupied'); // Mark this snap point as occupied
             } else if (!$(this).hasClass('handSnap')) {
                 ui.draggable.attr('value', '1');//sets the value of the letter element for future use
                 UpdateScore(value);//Update the score with the regular value
                 ui.draggable.attr('id', 'onBoard');//tells other checkings to see if the piece is onBoard
+                ui.draggable.attr('name', 'boardElements');
                 boardElements++;//increase board elements 
                 $(this).attr('name', 'Occupied'); // Mark this snap point as occupied
             }
@@ -76,6 +79,7 @@ function onDone(){ //Once the letters are done being generated, the game is read
                 ui.draggable.attr('value', '3');//sets the value of the letter element for future use
                 doubleScore();//Update the score with the double word value
                 ui.draggable.attr('id', 'onBoard');//tells other checkings to see if the piece is onBoard
+                ui.draggable.attr('name', 'boardElements');
                 boardElements++;//increase board elements 
                 $(this).attr('name', 'Occupied'); // Mark this snap point as occupied
             }
@@ -104,17 +108,35 @@ function GenerateStartingLetters() {
     }
     onDone();//start game
 }
+function resetSnapPoints() {
+    var snapPoints = document.querySelectorAll('#snapPoint');
+
+    // Iterate over each element and set the 'name' attribute to 'notOccupied'
+    snapPoints.forEach(function(snapPoint) {
+        snapPoint.setAttribute('name', 'notOccupied');
+    });
+}
 function newLetters() { //Creates new letters on the board
     //clear hand
+    totalScore += currentScore;
+    $("#totScore").html(totalScore);
+    currentScore = 0;
+    $("#score").html(currentScore);
     var handElements = document.getElementsByName("handElements");//gets availabe hand elements
+    var boardElements = document.getElementsByName("boardElements");
+    var boardLength = boardElements.length;
     var totalElements = handElements.length;//gets the count of how many there are
     remainingElements = totalElements - boardElements;//calculates the remaining elements
     //alert(remainingElements);
     for(var i= 0; i < remainingElements; i++) { //removes the old hand
         $("#onHand").remove();
     }
+    for(var i= 0; i < boardLength; i++) { //removes the old hand
+        $("#onBoard").remove();
+    }
+    resetSnapPoints();
     //New letters
-    generateRemainingLetter(remainingElements);//creates the new hand
+    generateRemainingLetter(boardLength);//creates the new hand
 }
 function generateRemainingLetter(count) { //creates a remaining amount of hand elements, same logic as GenerateStartingLetters() but with a count of how many should be done
     let iter = 0; 
