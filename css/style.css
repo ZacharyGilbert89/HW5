@@ -14,7 +14,7 @@ body {
 	height: 100vh;/*Fills screen*/
 }
 h1 {/*Title of the game*/
-    font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
+    font-family: 'Arial', sans-serif;
     position: absolute;
     font-size: 200px;
     top: -3%;
