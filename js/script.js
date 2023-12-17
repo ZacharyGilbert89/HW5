@@ -92,7 +92,7 @@ function GenerateStartingLetters() {
             var letter = Letters[num];
             var letterSelect = piecesArray.find(piece => piece.letter === letter)
             if(letterSelect.amount > 0) {//checks to see if that letter can be used depending on the amount of those letters
-                $('#snapHand'+offset).append('<img value = "1" name = "handElements" id = "onHand" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
+                $('#snapHand'+offset).append('<img value = "1" name = "handElements" id = "onHand" class="draggable_box" src = "../Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
                 iter++;//tells it that we have a valid letter
                 offset++;//allows different uniquely identifiable letter elements
                 letterSelect.amount--;//decrease how many of that letter can be used left
@@ -125,7 +125,7 @@ function generateRemainingLetter(count) { //creates a remaining amount of hand e
             var letter = Letters[num];
             var letterSelect = piecesArray.find(piece => piece.letter === letter)
             if(letterSelect.amount > 0) {
-                $('#snapHand'+offset).append('<img name = "handElements" id = "onHand" class="draggable_box" src = "/Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
+                $('#snapHand'+offset).append('<img name = "handElements" id = "onHand" class="draggable_box" src = "../Scrabble_Tiles/Scrabble_Tile_'+ Letters[num]+ '.jpg" alt= "' + Letters[num] +'">');
                 iter++;
                 offset++;
             }
