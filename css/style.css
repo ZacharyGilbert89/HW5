@@ -1,3 +1,10 @@
+/* File: style.css
+GUI Assignment: HW5
+Zachary Gilbert, UMass Lowell Computer Science,
+Zachary_Gilbert@student.uml.edu
+Copyright (c) 2023 by Zachary Gilbert. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by ZG on December 15, 2023 at 11:30 AM */
 @font-face {
     font-family: 'Earth Orbiter Extra-Bold';
     src: url('/css/fonts/earthorbiterbold.ttf');
@@ -6,41 +13,42 @@
     font-family: 'Earth Orbiter Extra-Bold 3D';
     src: url('/css/fonts/earthorbiterdeep3d.ttf');
 }
-* {
+* { /*Sets default font*/
     font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
 }
 body {
+    /*Styles the background*/
     background: linear-gradient(-45deg, #23a6d5,#23a6d5, #a700df, #23d5ab,#23d5ab); /*Background Gradient*/
     background-repeat: no-repeat;
 	background-size: 400% 400%;
 	animation: gradient 10s ease-in-out infinite;/*Animation Call*/
 	height: 100vh;/*Fills screen*/
 }
-h1 {
+h1 {/*Title of the game*/
     font-family: 'Earth Orbiter Extra-Bold 3D', sans-serif;
     position: absolute;
     font-size: 200px;
     top: -3%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);/*Centers the element*/
     text-align: center;
 }
-#scoreBoard p {
+#scoreBoard p {/*Sets normal font for readability*/
     font-family: 'Arial', sans-serif;
 }
-#scrabbleBoard {
+#scrabbleBoard {/*size of the board*/
     height: 160px;
     width: 100vw;
 }
 
-#board{
+#board{/*Position of the board*/
     z-index: 0;
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
 }
-#scrabbleSnapPoint {
+#scrabbleSnapPoint {/*This for lining up the snap points on the board*/
     position:absolute;
     background: none;
     top: 30%;
@@ -51,10 +59,10 @@ h1 {
     grid-auto-flow: column;
     column-gap: 8px;
 }
-#scrabbleSnapPoint > * {
+#scrabbleSnapPoint > * {/*Tries to center them*/
     align-self: center;
 }
-article {
+article {/*for hand snap points*/
     background-color: transparent;
     position: absolute;
     top: 30%;
@@ -62,7 +70,7 @@ article {
     transform: translateX(-50%) translateY(-50%);
     margin-top: 30vh;
 }
-#letterBoard {
+#letterBoard {/*Styling for the hand rack*/
     opacity: 1;
     width:110%;
     position: absolute;
@@ -70,14 +78,14 @@ article {
     top:-40px;
     left:-40px;
 }
-.handSnap {
+.handSnap {/*styling for the handsnappoints, making sure they are the same size as the pieces*/
     z-index: 199;
     display:inline-block;
     width: 80px;
     height: 80px;
     border:3px solid black;
 }
-#snapPoint {
+#snapPoint {/*styling for snappoints on the board*/
     background: none;
     z-index: 1;
     position:grid;
@@ -85,13 +93,13 @@ article {
     height: 80px;
     border: 1px solid transparent;
 }
-.draggable_box {
+.draggable_box {/*styling for the pieces, setting a size of the pieces*/
     position: absolute;
     z-index: 2;
     width: 82px;
     height: 82px;
 }
-#scoreBoard h2{
+#scoreBoard h2{/*styling the scoreboard*/
     position: absolute;
     top: 15%;
     left: 50%;
@@ -100,7 +108,7 @@ article {
     font-size:xx-large;
     text-align: center;
 }
-#scoreBoard p {
+#scoreBoard p {/*styling for the score title of the game*/
     position: absolute;
     top: 20%;
     left: 50%;
@@ -109,7 +117,7 @@ article {
     text-align: center;
     font-size: xx-large;
 }
-#newLetter, #startOver{
+#newLetter, #startOver{ /*Styling for positions the buttons for restarting the game, and new letters*/
     position: absolute;
     cursor:pointer;
     width: 100px;
@@ -117,32 +125,32 @@ article {
     background: white;
     top: 45%;
 }
-#newLetter {
+#newLetter {/*slight deviation to allow them to be spaced from one another*/
     left: 45%;
     width: 100px;
     transform: translateX(-50%) translateY(-50%);
 }
-#startOver {
+#startOver {/*slight deviation to allow them to be spaced from one another*/
     left: 55%;
     width: 100px;
     transform: translateX(-50%) translateY(-50%);
 }
-#startOver:hover {
+#startOver:hover {/*styling for a cool effect when the user hovers over the button*/
     outline: none;
     border-color: rgb(255, 0, 0);
     background:rgb(255, 0, 0);
     box-shadow: 0 0 80px rgb(255, 0, 0);
 }
-#newLetter:hover {
+#newLetter:hover {/*styling for a cool effect when the user hovers over the button*/
     outline: none;
     background: rgb(13, 255, 0);
     border-color: rgb(13, 255, 0);
     box-shadow: 0 0 80px rgb(13, 255, 0);
 }
-#lettersDraggable {
+#lettersDraggable {/*makes sure that the tile pieces are always visible*/
     z-index: 1000;
 }
-.ui-draggable:hover {
+.ui-draggable:hover {/*styling for a cool effect when the user hovers over the pieces*/
     outline: none;
     border-color: rgb(13, 255, 0);
     box-shadow: 0 0 80px rgb(13, 255, 0);

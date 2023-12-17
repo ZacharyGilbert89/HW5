@@ -1,3 +1,12 @@
+<!--
+File: index.html
+GUI Assignment: HW5
+Zachary Gilbert, UMass Lowell Computer Science,
+Zachary_Gilbert@student.uml.edu
+Copyright (c) 2023 by Zachary Gilbert. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by ZG on December 15, 2023 at 11:30 AM
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,16 +21,16 @@
 <body>
     <h1>Scrabble</h1>
     <div id = "scrabbleBoard">
-        <img id = "board" src = '/board_oneline.jpg'>
-        <div id = "scoreBoard">
+        <img id = "board" src = '/board_oneline.jpg'><!--This image was created by me cause the one provided didnt have even spacing-->
+        <div id = "scoreBoard"><!--Scoreboard element-->
             <h2>Score: </h2>
             <p id="score"></p>
         </div>
         <div id = "snapPointPositions">
-            <div id = "scrabbleSnapPoint">
+            <div id = "scrabbleSnapPoint"><!--board Snap Points-->
                 <div name = "notOccupied" class = "snapPoint1" id = "snapPoint"></div>
                 <div name = "notOccupied" class = "snapPoint2" id = "snapPoint"></div>
-                <div name = "notOccupied" class = "snapPoint3" id = "snapPoint"></div><!--Double-->
+                <div name = "notOccupied" class = "snapPoint3" id = "snapPoint"></div><!--Double Word-->
                 <div name = "notOccupied" class = "snapPoint4" id = "snapPoint"></div>
                 <div name = "notOccupied" class = "snapPoint5" id = "snapPoint"></div>
     
@@ -33,15 +42,16 @@
     
                 <div name = "notOccupied" class = "snapPoint11" id = "snapPoint"></div>
                 <div name = "notOccupied" class = "snapPoint12" id = "snapPoint"></div>
-                <div name = "notOccupied" class = "snapPoint13" id = "snapPoint"></div><!--Double-->
+                <div name = "notOccupied" class = "snapPoint13" id = "snapPoint"></div><!--Double Word-->
                 <div name = "notOccupied" class = "snapPoint14" id = "snapPoint"></div>
                 <div name = "notOccupied" class = "snapPoint15" id = "snapPoint"></div>
             </div>
         </div>
-        <button id = "newLetter" type = "button" onclick = newLetters()>New Letters</button>
-        <button id = "startOver" type = "button" onclick = startOver()>NEW GAME</button>
+        <button id = "newLetter" type = "button" onclick = newLetters()>New Letters</button><!--New Letters Button-->
+        <button id = "startOver" type = "button" onclick = startOver()>NEW GAME</button><!--Restarts the game button-->
         <article>
             <div id = "lettersDraggable">
+                <!--Hand Snap Points-->
                 <div class = "handSnap" id = "snapHand1"></div>
                 <div class = "handSnap" id = "snapHand2"></div>
                 <div class = "handSnap" id = "snapHand3"></div>
@@ -50,7 +60,7 @@
                 <div class = "handSnap" id = "snapHand6"></div>
                 <div class = "handSnap" id = "snapHand7"></div>
             </div>
-            <img id = "letterBoard" src = 'graphics_data/scrabble-tile-holder-406774_640.png'>
+            <img id = "letterBoard" src = 'graphics_data/scrabble-tile-holder-406774_640.png'><!--Thi-->
         </article>
     </div>
     <script src="js/script.js"></script>
